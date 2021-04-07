@@ -1,12 +1,1 @@
-[
-    {
-        "title":"Test Title",
-        "text":"Test text",
-        "id":"0001"
-    },
-    {
-        "title":"Manual Entry",
-        "text":"Entered text",
-        "id":"0002"
-    }
-]
+[{"title":"Test Title","text":"Test text","id":"00000001"},{"title":"should","text":"be","id":"19e018fc-ed2e-4168-a951-4d1a65c6cda9"},{"title":"fix note taker","text":"it's pretty messed up rn","id":"01e14fbd-ad5b-4adc-8b0a-fcd98d3ac3e8"},{"title":"Issues include","text":"not rendering new note after submission,\nunable to submit more than one note at a time w/o refresh,\ncannot delete (yet?)","id":"447ec0b2-37e4-48a0-bab8-26c599102bdf"},{"title":"faloffle","text":"time to find out","id":"8c0e37e6-a5c6-4e62-9069-48d9cbd2196f"}]
