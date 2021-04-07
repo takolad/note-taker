@@ -1,6 +1,12 @@
 [
     {
         "title":"Test Title",
-        "text":"Test text"
+        "text":"Test text",
+        "id":"0001"
+    },
+    {
+        "title":"Manual Entry",
+        "text":"Entered text",
+        "id":"0002"
     }
 ]
