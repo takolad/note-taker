@@ -34,14 +34,29 @@ app.post('/api/notes', (req, res) => {
     // write array back to json file
     fs.readFile(path.join(__dirname, './db/db.json'), (err, data) => {
         if (err) throw err;
-        const noteArray = JSON.parse(data);
 
+        const noteArray = JSON.parse(data);
         noteArray.push(newNote);
+        
         fs.writeFileSync(path.join(__dirname, './db/db.json'), JSON.stringify(noteArray));
     });
 
     // res with newNote
     res.send(newNote);
+})
+
+app.delete('/api/notes/:id', (req, res) => {
+    const chosen = req.params.id;
+
+    fs.readFile(path.join(__dirname, './db/db.json'), (err, data) => {
+        if (err) throw err;
+
+        const noteArray = JSON.parse(data);
+        const newArray = noteArray.filter(note => note.id !== chosen);
+
+        fs.writeFileSync(path.join(__dirname, './db/db.json'), JSON.stringify(newArray));
+        res.send("DELETE Request Called");
+    });
 })
 
 
