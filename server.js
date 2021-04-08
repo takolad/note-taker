@@ -38,7 +38,7 @@ app.post('/api/notes', (req, res) => {
         const noteArray = JSON.parse(data);
         noteArray.push(newNote);
         
-        fs.writeFileSync(path.join(__dirname, './db/db.json'), JSON.stringify(noteArray));
+        fs.writeFileSync(path.join(__dirname, './db/db.json'), JSON.stringify(noteArray, null, '\t'));
     });
 
     // res with newNote
@@ -54,7 +54,7 @@ app.delete('/api/notes/:id', (req, res) => {
         const noteArray = JSON.parse(data);
         const newArray = noteArray.filter(note => note.id !== chosen);
 
-        fs.writeFileSync(path.join(__dirname, './db/db.json'), JSON.stringify(newArray));
+        fs.writeFileSync(path.join(__dirname, './db/db.json'), JSON.stringify(newArray, null, '\t'));
         res.send("DELETE Request Called");
     });
 })
