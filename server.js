@@ -42,7 +42,7 @@ app.post('/api/notes', (req, res) => {
     });
 
     // res with newNote
-    res.send(newNote);
+    res.send(JSON.stringify(newNote));
 })
 
 app.delete('/api/notes/:id', (req, res) => {

@@ -1,12 +1,12 @@
 [
 	{
-		"title": "Issues include",
-		"text": "not rendering new note after submission,\nunable to submit more than one note at a time w/o refresh,\ncannot delete (yet?)",
-		"id": "447ec0b2-37e4-48a0-bab8-26c599102bdf"
-	},
-	{
 		"title": "Rerender",
 		"text": "needs to rerender after action (add/delete)",
 		"id": "16f8ca5d-33b0-4b1e-b6f4-c3f8ff675cab"
+	},
+	{
+		"title": "Get Groceries",
+		"text": "Milk\nBread\nYogurt\nBeer?",
+		"id": "cbe8d2a9-dcae-4519-ab05-84289183e07f"
 	}
 ]
