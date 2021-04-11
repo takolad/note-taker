@@ -7,26 +7,28 @@ const fs = require('fs');
 const app = express();
 const PORT = process.env.PORT || 3000;
 
-
-// Unsure if this is necessary //
 // Sets up the Express app to handle data parsing
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
 // Routes
-
-// Basic routes
-app.get('/', (req, res) => res.sendFile(path.join(__dirname, 'public/index.html')));
 app.get('/notes', (req, res) => res.sendFile(path.join(__dirname, 'public/notes.html')));
 
-const notes = fs.readFileSync(path.join(__dirname, './db/db.json'), 'utf-8');
-app.get('/api/notes', (req,res) => res.end(notes));
+// Gets all the notes
+app.get('/api/notes', (req,res) => {
+    try {
+        const data = fs.readFileSync(path.join(__dirname, './db/db.json'));
+        res.end(data);
+    } catch (err) {
+        throw err;
+    }
+});
 
-// this worked, did I have to do this?
+// asset routes
 app.get('/assets/css/styles.css', (req, res) => res.sendFile(path.join(__dirname, 'public/assets/css/styles.css')));
 app.get('/assets/js/index.js', (req, res) => res.sendFile(path.join(__dirname, 'public/assets/js/index.js')));
 
-
+// POST new note
 app.post('/api/notes', (req, res) => {
     const newNote = req.body;
     newNote.id = uuidv4();
@@ -42,9 +44,10 @@ app.post('/api/notes', (req, res) => {
     });
 
     // res with newNote
-    res.send(JSON.stringify(newNote));
+    res.send(newNote);
 })
 
+// delete note with matching id
 app.delete('/api/notes/:id', (req, res) => {
     const chosen = req.params.id;
 
@@ -59,7 +62,8 @@ app.delete('/api/notes/:id', (req, res) => {
     });
 })
 
-
+// any route not matching one of the previously mentioned will go to index page
+app.get('*', (req, res) => res.sendFile(path.join(__dirname, 'public/index.html')));
 
 
 // Starts the server to begin listening
